@@ -34,12 +34,12 @@ function authRole(role) {
 
 //REDIRECT TO THE REGISTRATION MICROSERVICE
 app.use('/register', (req, res) => {
-    proxy.web(req, res, { target: 'http://3.86.217.96:5001' });
+    proxy.web(req, res, { target: 'http://98.81.221.71:5001' });
 })
 
 //REDIRECT TO THE LOGIN(Authentication) MICROSERVICE
 app.use('/auth', (req, res) => {
-    proxy.web(req, res, { target: 'http://3.86.217.96:5002' });
+    proxy.web(req, res, { target: 'http://98.81.221.71:5002' });
 })
 
 
@@ -47,7 +47,7 @@ app.use('/auth', (req, res) => {
 app.use('/user', authToken, authRole('user'), (req, res) => {
     console.log("INSIDE API GATEWAY USER ROUTE")
     proxy.web(req, res, {
-        target: 'http://54.234.83.249:5003',
+        target: 'http://32.197.63.111:5003',
         headers: { 'x-user-email': req.user.email }
     });
 })
@@ -55,7 +55,7 @@ app.use('/user', authToken, authRole('user'), (req, res) => {
 //REDIRECT TO THE ADMIN MICROSERVICE
 app.use('/admin', authToken, authRole('admin'),(req, res) => {
     console.log("INSIDE API GATEWAY ADMIN ROUTE")
-    proxy.web(req, res, { target: 'http://3.82.216.32:5004' });
+    proxy.web(req, res, { target: 'http://18.212.6.97:5004' });
 })
 
 
