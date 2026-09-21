@@ -6,6 +6,19 @@ app.use(express.json());
 const dbconnect = require('./dbconnect.js');
 const PersonModel = require('./person_schema.js');
 
+/* 
+{ "email": "singmey@gmail.com",
+  "password": "12345678",
+  "role": "user"
+}
+
+{
+ "email": "admin@gmail.com",
+ "password": "999999",
+ "role": "user"
+ }
+*/
+
 // VIEW OWN PROFILE
 app.get('/viewprofile', async (req, res) => {
   try {
